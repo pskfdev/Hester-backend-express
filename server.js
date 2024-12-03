@@ -6,7 +6,7 @@ const { readdirSync } = require("fs"); // ใช้ในการอ่าน d
 const app = express();
 
 /* Middleware */
-app.use(morgan("dev")); //ช่วยให้สามารถดูข้อมูลการส่ง req มาได้
+app.use(morgan("dev")); //ช่วยให้สามารถดู Log ข้อมูลการส่ง req มาได้
 app.use(express.json({ limit: "20mb" })); //ช่วยให้ server อ่านข้อมูลที่ส่งมาแบบ json ได้ และกำหนดขนาดในการรับส่งข้อมูล
 app.use(cors()); //อนุญาตให้ติดต่อกันแบบข้ามโดเมนได้ (cross domain)
 
