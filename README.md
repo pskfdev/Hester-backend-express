@@ -1,1 +1,1 @@
-# DATABASE_URL="mysql://root@localhost:3306/db_hester"
+## DATABASE_URL="mysql://root@localhost:3306/db_hester"
