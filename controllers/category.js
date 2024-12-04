@@ -1,8 +1,16 @@
+const prisma = require('../config/prisma')
+
 exports.createCategory = async (req, res) => {
   try {
-    //Code
+    const { name } = req.body;
 
-    res.status(200).json({ message: "Hello create Category!" });
+    const category = await prisma.category.create({
+      data: {
+        name: name,
+      },
+    });
+
+    res.status(200).json(category);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -11,9 +19,9 @@ exports.createCategory = async (req, res) => {
 
 exports.listCategory = async (req, res) => {
   try {
-    //Code
+    const categorys = await prisma.category.findMany();
 
-    res.status(200).json({ message: "Hello list Category!" });
+    res.status(200).json(categorys);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -22,9 +30,15 @@ exports.listCategory = async (req, res) => {
 
 exports.readCategory = async (req, res) => {
   try {
-    //Code
+    const { id } = req.params;
 
-    res.status(200).json({ message: "Hello read Category!" });
+    const category = await prisma.category.findFirst({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    res.status(200).json(category);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -33,9 +47,19 @@ exports.readCategory = async (req, res) => {
 
 exports.updateCategory = async (req, res) => {
   try {
-    //Code
+    const { id } = req.params;
+    const { name } = req.body;
 
-    res.status(200).json({ message: "Hello update Category!" });
+    const category = await prisma.category.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        name: name,
+      },
+    });
+
+    res.status(200).json(category);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -44,9 +68,15 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    //Code
+    const { id } = req.params;
 
-    res.status(200).json({ message: "Hello delete Category!" });
+    const category = await prisma.category.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    res.status(200).json(category);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });

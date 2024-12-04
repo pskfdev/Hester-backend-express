@@ -83,7 +83,6 @@ exports.login = async (req, res) => {
         res.status(200).json({ payload, token });
       }
     );
-
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -92,9 +91,7 @@ exports.login = async (req, res) => {
 
 exports.currentUser = async (req, res) => {
   try {
-    //Code
-
-    res.status(200).json({ message: "Hello current User!" });
+    res.status(200).json(req.user);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
@@ -103,9 +100,7 @@ exports.currentUser = async (req, res) => {
 
 exports.currentAdmin = async (req, res) => {
   try {
-    //Code
-
-    res.status(200).json({ message: "Hello current Admin!" });
+    res.status(200).json(req.user);
   } catch (err) {
     console.log("Err", err);
     res.status(500).json({ message: "Server Error!" });
