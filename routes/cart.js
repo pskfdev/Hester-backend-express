@@ -9,7 +9,7 @@ const { userCheck } = require('../middleware/authCheck')
 
 router.post('/cart', userCheck, addCart)
 router.get('/cart', userCheck, listCart)
-router.get('/cart', userCheck, readCart)
+router.get('/cart/:cartId', userCheck, readCart)
 router.put('/cart', userCheck, updateCart)
 router.delete('/cart', userCheck, removeCart)
 

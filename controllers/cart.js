@@ -45,7 +45,7 @@ exports.listCart = async (req, res) => {
 exports.readCart = async (req, res) => {
   try {
     const { id } = req.user;
-    const { cartId } = req.body
+    const { cartId } = req.params
 
     const cart = await prisma.cart.findFirst({
       where: {
