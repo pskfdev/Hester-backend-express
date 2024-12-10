@@ -51,13 +51,14 @@ exports.readBlog = async (req, res) => {
 exports.updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, imageOld } = req.body;
+    const { name, description, imageOld } = req.body;/* ส่งรูปเก่ามาด้วย(imageOld) */
 
     const newData = {
       name: name,
       description: description,
       image: imageOld,
     };
+
 
     //check upload image
     //ถ้ามีการอัปรูปใหม่ จะเข้า middleware upload และทำคำสั่งภายใน if

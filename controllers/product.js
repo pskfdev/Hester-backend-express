@@ -24,7 +24,11 @@ exports.createProduct = async (req, res) => {
 
 exports.listProduct = async (req, res) => {
   try {
-    const product = await prisma.product.findMany();
+    const product = await prisma.product.findMany({
+      include: {
+        category: true,
+      },
+    });
 
     res.status(200).json(product);
   } catch (err) {
@@ -40,6 +44,9 @@ exports.readProduct = async (req, res) => {
     const product = await prisma.product.findFirst({
       where: {
         id: Number(id),
+      },
+      include: {
+        category: true,
       },
     });
 
