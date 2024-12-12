@@ -46,7 +46,7 @@ exports.listWishlist = async (req, res) => {
 exports.removeWishlist = async (req, res) => {
   try {
     const { id } = req.user;
-    const { wishlistId } = req.body;
+    const { wishlistId } = req.params;
 
     //remove wishlist to DB
     const wishlist = await prisma.wishlist.delete({

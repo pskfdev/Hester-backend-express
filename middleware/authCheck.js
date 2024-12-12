@@ -24,11 +24,26 @@ exports.userCheck = async (req, res, next) => {
       where: {
         username: req.user.username,
       },
+      include: {
+        wishlists: true,
+        cart: true
+      },
     });
 
     if (!user) {
       return res.status(401).json({ message: "User not found!" });
     }
+
+    //สร้าง payload ใหม่เพื่ออัพเดท wishlist และ cart
+    const payload = {
+      id: user.id,
+      username: user.username,
+      role: user.role,
+      name: user.name,
+      wishlists: user.wishlists,
+      cart: user.cart
+    };
+    req.user = payload;
 
     next();
   } catch (err) {

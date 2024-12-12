@@ -9,7 +9,7 @@ const { userCheck } = require('../middleware/authCheck')
 
 router.post('/wishlist', userCheck, addWishlist)
 router.get('/wishlist', userCheck, listWishlist)
-router.delete('/wishlist', userCheck, removeWishlist)
+router.delete('/wishlist/:wishlistId', userCheck, removeWishlist)
 
 
 
