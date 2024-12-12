@@ -52,6 +52,10 @@ exports.login = async (req, res) => {
       where: {
         username: username,
       },
+      include: {
+        wishlists: true,
+        cart: true
+      },
     });
     if (!user) {
       return res.status(400).json({ message: "User not found!" });
@@ -68,7 +72,9 @@ exports.login = async (req, res) => {
       id: user.id,
       username: user.username,
       role: user.role,
-      name: user.name
+      name: user.name,
+      wishlists: user.wishlists,
+      cart: user.cart
     };
     jwt.sign(
       payload,
