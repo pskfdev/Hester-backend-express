@@ -90,7 +90,7 @@ exports.updateCart = async (req, res) => {
 exports.removeCart = async (req, res) => {
   try {
     const { id } = req.user;
-    const { cartId } = req.body;
+    const { cartId } = req.params;
 
     //remove cart to DB
     const cart = await prisma.cart.delete({

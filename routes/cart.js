@@ -11,7 +11,7 @@ router.post('/cart', userCheck, addCart)
 router.get('/cart', userCheck, listCart)
 router.get('/cart/:cartId', userCheck, readCart)
 router.put('/cart', userCheck, updateCart)
-router.delete('/cart', userCheck, removeCart)
+router.delete('/cart/:cartId', userCheck, removeCart)
 
 
 
