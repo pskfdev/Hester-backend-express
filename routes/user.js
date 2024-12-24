@@ -6,14 +6,16 @@ const { listUser, readUser, updateName, deleteUser, changePassword, changeRole }
 /* Middleware */
 const { userCheck, adminCheck } = require('../middleware/authCheck')
 
-
+/* For admin */
 router.get('/user', userCheck, adminCheck, listUser)
 router.get('/user/:id', userCheck, adminCheck, readUser)
-router.put('/user/:id', userCheck, adminCheck, updateName)
+router.put('/change-role/:id', userCheck, adminCheck, changeRole)
 router.delete('/user/:id', userCheck, adminCheck, deleteUser)
 
-router.put('/change-password/:id', userCheck, adminCheck, changePassword)
-router.put('/change-role/:id', userCheck, adminCheck, changeRole)
+/* For user */
+router.put('/user/:id', userCheck, updateName)
+router.put('/change-password/:id', userCheck, changePassword)
+
 
 
 

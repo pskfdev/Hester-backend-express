@@ -46,6 +46,7 @@ exports.updateName = async (req, res) => {
   try {
     const { id } = req.params;
     const { name } = req.body;
+    
 
     const user = await prisma.user.update({
       where: {
@@ -53,6 +54,12 @@ exports.updateName = async (req, res) => {
       },
       data: {
         name: name
+      },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+        role: true,
       },
     });
 

@@ -56,9 +56,6 @@ exports.adminCheck = async (req, res, next) => {
   try {
     const { username, role } = req.user;
 
-    console.log(username, role);
-    
-
     //Check ว่ามี user นี้ไหม และ user นี้เป็น role="admin" ไหม
     if (!username || role !== "admin") {
       return res.status(403).json({ message: "Error access denied: Admin only!" });
